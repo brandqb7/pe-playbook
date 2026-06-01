@@ -1,0 +1,240 @@
+export interface SkillCue {
+  letter: string;
+  name: string;
+  description: string;
+  commonMistake: string;
+}
+
+export interface SkillCard {
+  id: string;
+  name: string;
+  category: string;
+  grades: string;
+  teks: string;
+  description: string;
+  cues: SkillCue[];
+  teacherTips: string;
+  progression: string[];
+  equipment: string;
+  unit: string;
+}
+
+export const SKILL_CARDS: SkillCard[] = [
+  {
+    id: "overhand-throw",
+    name: "Overhand Throw",
+    category: "Throwing & Catching",
+    grades: "K–5",
+    teks: "K.1H · 1st.1H · 2nd.1N · 3rd.1J · 4th.1K · 5th.1K",
+    description: "The overhand throw is the foundation of nearly every throwing sport. A mature overhand throw requires a full body rotation — it is not just an arm movement.",
+    cues: [
+      { letter: "T", name: "T-Position", description: "Both arms extended like the letter T. Non-throwing arm points directly at the target. This establishes your aim.", commonMistake: "Arms not fully extended — students often skip this step" },
+      { letter: "T", name: "Tilt", description: "Tilt your body back — the non-throwing foot lifts off the ground. This loads your body like a spring to generate power.", commonMistake: "Not tilting back — throwing with arm only = weak throw" },
+      { letter: "B", name: "Bend", description: "Bend the elbow of your throwing arm. Ball is beside or behind your ear, ready to throw. Elbow above shoulder level.", commonMistake: "Elbow too low — causes a sidearm throw instead of overhand" },
+      { letter: "T", name: "Twist", description: "Twist your hips and body toward the target as you prepare to release. This transfers the power from your legs through your core to your arm.", commonMistake: "No hip rotation — just using arm strength" },
+      { letter: "T", name: "Throw", description: "Release the ball, step toward target with opposite foot, follow through — thumb points down at finish. The opposite-foot step is critical.", commonMistake: "Stepping with same-side foot — kills power and accuracy" },
+    ],
+    teacherTips: "Teach T-position first — it establishes the aim and the body position. Have students mirror you facing the wall, not each other. Count out the cues slowly: T — Tilt — Bend — Twist — Throw.",
+    progression: ["Start with the wall as target (large, non-threatening)", "Move to crate targets (accuracy challenge)", "Progress to partner throwing (moving target)", "Apply in game situation (Cracker Ball, Swamp Ball)"],
+    equipment: "Yarn balls, bean bags, or foam balls · Wall targets or crates",
+    unit: "Weeks 8–9",
+  },
+  {
+    id: "catching",
+    name: "Catching",
+    category: "Throwing & Catching",
+    grades: "K–5",
+    teks: "K.1H · 1st.1H · 2nd.1N · 3rd.1J · 4th.1K · 5th.1K",
+    description: "Catching is the skill most students struggle with because it requires tracking a moving object and coordinating hands to intercept it. Fear of the ball is real — start with scarves.",
+    cues: [
+      { letter: "E", name: "Eyes on Ball", description: "Track the ball from the moment it leaves the thrower's hand. Never look away. Watch the ball into your hands.", commonMistake: "Closing eyes when ball approaches — use soft foam balls to build confidence" },
+      { letter: "R", name: "Ready Hands", description: "Hands up and open, fingers spread. Don't wait until the last second — get ready early.", commonMistake: "Arms at sides until too late — can't react in time" },
+      { letter: "R", name: "Reach", description: "Reach toward the ball — don't wait for it to come to you. Move your hands to meet it.", commonMistake: "Pulling hands back at contact — causes the ball to bounce away" },
+      { letter: "S", name: "Squeeze", description: "Close hands firmly on contact. Give slightly with the ball to absorb the impact (soft hands).", commonMistake: "Stiff hands — ball bounces off instead of being caught" },
+    ],
+    teacherTips: "Use scarves first for K-1 — they float slowly and give students time to track and reach. Progress to yarn balls, then foam balls. Always self-toss before partner toss.",
+    progression: ["Scarf self-toss and catch", "Yarn ball self-toss", "Partner toss (standing close)", "Increase distance", "Catching while moving (walking first)"],
+    equipment: "Scarves · Yarn balls · Foam balls · Spooners",
+    unit: "Weeks 8–9",
+  },
+  {
+    id: "dribbling-basketball",
+    name: "Basketball Dribbling",
+    category: "Basketball",
+    grades: "K–5",
+    teks: "K.1H · 1st.1H · 2nd.1N · 3rd.1J · 4th.1K · 5th.1K",
+    description: "A mature dribbling pattern uses the fingertips (not the palm) with the ball consistently at waist height or below. Eyes stay up to see the court.",
+    cues: [
+      { letter: "F", name: "Fingertips", description: "Push the ball with your fingertips — not your palm. Use the pads of your fingers for control. The palm should never touch the ball.", commonMistake: "Slapping with palm — loses control quickly" },
+      { letter: "W", name: "Waist Height", description: "Ball should bounce no higher than your waist. The lower the dribble the more control you have and the harder it is to steal.", commonMistake: "Bouncing too high — easy to steal, hard to control" },
+      { letter: "E", name: "Eyes Up", description: "Keep your head up and eyes looking forward. You should be able to see the whole gym while dribbling. Don't watch the ball.", commonMistake: "Looking at the ball the whole time — can't see teammates or defenders" },
+      { letter: "K", name: "Knees Bent", description: "Stay low with knees bent. A low body position gives you power, stability, and makes it harder for defenders to reach your ball.", commonMistake: "Standing straight up — less control and easier to knock off balance" },
+    ],
+    teacherTips: "Have students dribble while looking at YOU (not the ball). Hold up fingers and have them call out the number — forces eyes up. Practice stationary first, then walking, then through cones.",
+    progression: ["Stationary dribble — dominant hand", "Stationary — non-dominant hand", "Walking dribble", "Weave through cones", "Dribble while doing another task (pick up cones)", "Game application"],
+    equipment: "1 basketball per student (or 1 per 2)",
+    unit: "Weeks 19–22",
+  },
+  {
+    id: "chest-pass",
+    name: "Basketball Chest Pass",
+    category: "Basketball",
+    grades: "K–5",
+    teks: "K.1H · 1st.1H · 2nd.1N · 3rd.1J · 4th.1K · 5th.1K",
+    description: "The chest pass is the most common and efficient pass in basketball. It should arrive at the receiver's chest at waist height — easy to catch without jumping or bending.",
+    cues: [
+      { letter: "S", name: "Step", description: "Step toward your target with one foot as you pass. This transfers body weight forward and adds power and accuracy.", commonMistake: "No step — arm-only passes are weak and inaccurate" },
+      { letter: "P", name: "Push", description: "Push the ball forward from chest height — elbows out, then extend arms fully toward target.", commonMistake: "Throwing from hip or shoulder instead of chest" },
+      { letter: "E", name: "Extend", description: "Fully extend both arms toward your target. Arms should be almost straight at release.", commonMistake: "Stopping the push early — short passes" },
+      { letter: "T", name: "Thumbs Down", description: "At release, both thumbs rotate to point down. This is the follow-through. If your thumbs are up, the ball is going up — not to your partner.", commonMistake: "Thumbs staying up — ball goes high or off target" },
+    ],
+    teacherTips: "Teach the STEP-PUSH-EXTEND-THUMBS DOWN sequence. Have students pass to the wall first — the wall never drops the ball and gives immediate feedback on where the pass went.",
+    progression: ["Pass to wall — stationary", "Pass to partner — close range (5 feet)", "Increase distance", "Pass while walking", "Game application (5 passes game)"],
+    equipment: "1 basketball per pair",
+    unit: "Weeks 20–21",
+  },
+  {
+    id: "beef-shooting",
+    name: "Basketball Shooting — BEEF",
+    category: "Basketball",
+    grades: "2–5",
+    teks: "3rd.1J · 4th.1K · 5th.1K",
+    description: "BEEF is the universally taught basketball shooting cue. A mature shooting form produces a consistent arc with backspin. Start close to the basket — form matters more than distance.",
+    cues: [
+      { letter: "B", name: "Balance", description: "Feet shoulder-width apart. Shooting foot slightly forward (right foot forward for right-handers). Knees slightly bent. Athletic stance.", commonMistake: "Feet together or too wide — unstable base" },
+      { letter: "E", name: "Eyes", description: "Pick your target: front of the rim (not the backboard). Keep eyes on target throughout the entire shot. Never watch the ball once it's released.", commonMistake: "Looking at the ball as it goes up — loses focus on target" },
+      { letter: "E", name: "Elbow", description: "Shooting elbow in and directly under the ball. Elbow forms an L-shape pointing at the basket. This is the guide for your shot direction.", commonMistake: "Elbow flaring out to the side — causes the shot to go left or right" },
+      { letter: "F", name: "Follow Through", description: "Extend arm fully upward. Wrist snaps down at release — fingers point toward the floor (goose neck). Hold the follow-through until the ball hits the rim.", commonMistake: "Dropping the arm immediately after release — no follow-through" },
+    ],
+    teacherTips: "Shoot with NO BALL first — have students practice the motion 10 times. Then add ball. Start from 3–4 feet. The goal is form, not making every shot. Check: is the elbow in? Is there a follow-through?",
+    progression: ["No ball — just the motion", "Self-toss and catch in shooting position", "Shoot from under the basket", "Move to elbow (5 feet)", "Free throw line", "Around the World application"],
+    equipment: "Basketballs · Adjustable hoops if available",
+    unit: "Weeks 21–22",
+  },
+  {
+    id: "soccer-dribbling",
+    name: "Soccer Dribbling",
+    category: "Soccer",
+    grades: "K–5",
+    teks: "K.1H · 1st.1H · 2nd.1N · 3rd.1J · 4th.1K · 5th.1K",
+    description: "Soccer dribbling uses the inside, outside, and sole of the foot for small controlled touches. Keep the ball close — no more than one foot away with each touch.",
+    cues: [
+      { letter: "S", name: "Small Touches", description: "Touch the ball with every step — small controlled touches keep the ball close. Big kicks forward = loss of control.", commonMistake: "Kicking too hard and chasing the ball" },
+      { letter: "I", name: "Inside of Foot", description: "Use the inside (arch area) of your foot for most touches. This is the largest flat surface for control.", commonMistake: "Using the toe — unpredictable direction" },
+      { letter: "E", name: "Eyes Up", description: "Look up while dribbling. You should know where the ball is without watching it constantly.", commonMistake: "Head down staring at ball the whole time" },
+      { letter: "C", name: "Close Control", description: "Ball stays within arm's reach at all times. If a defender could easily take it, it's too far away.", commonMistake: "Ball getting too far ahead — defenders can intercept" },
+    ],
+    teacherTips: "Start with stationary toe-taps (alternating feet on top of ball) to build foot-ball connection. Then roll ball with inside of foot to a wall and back. Then cone dribble.",
+    progression: ["Toe taps stationary", "Roll ball in place with inside of foot", "Walking dribble — straight line", "Cone weave", "Stop and start on signal", "Game — Sharks & Minnows Dribble"],
+    equipment: "1 soccer ball per student · Cones",
+    unit: "Weeks 11–14",
+  },
+  {
+    id: "soccer-kicking",
+    name: "Soccer Kicking",
+    category: "Soccer",
+    grades: "K–5",
+    teks: "K.1H · 1st.1H · 2nd.1N · 3rd.1J · 4th.1K · 5th.1K",
+    description: "A mature kicking pattern uses the instep (shoelaces) for power and the inside of the foot for accuracy. The non-kicking foot plants beside (not behind) the ball.",
+    cues: [
+      { letter: "A", name: "Approach", description: "Approach the ball from a slight angle (not straight on). This allows your hips to fully rotate through the kick.", commonMistake: "Coming straight at the ball — limits power" },
+      { letter: "P", name: "Plant Foot", description: "Non-kicking foot plants beside the ball — not behind it. Toe of plant foot points at target.", commonMistake: "Plant foot too far behind — pulls kick offline" },
+      { letter: "C", name: "Contact", description: "Strike with the instep (shoelaces) for power. Strike with inside of foot for accuracy/passing.", commonMistake: "Kicking with the toe — painful and inaccurate" },
+      { letter: "F", name: "Follow Through", description: "Kicking leg swings all the way through and up after contact. The follow-through determines height and power.", commonMistake: "Stopping kick at contact — short weak kick" },
+    ],
+    teacherTips: "Have students practice the approach and plant foot WITHOUT kicking first. Step, plant, freeze — check position. Then add the kick. Use a stationary ball before a rolling ball.",
+    progression: ["Stationary ball kick to wall", "Stationary ball kick to target", "Rolling ball kick", "Pass to partner (accuracy)", "Shooting on goal", "Game application"],
+    equipment: "Soccer balls · Cones for goals",
+    unit: "Weeks 11–14",
+  },
+  {
+    id: "jump-rope-self",
+    name: "Jump Rope — Self-Turning",
+    category: "Jump Rope",
+    grades: "K–5",
+    teks: "K.1H · 1st.1H · 2nd.1N · 3rd.1J · 4th.1K · 5th.1K",
+    description: "Self-turning jump rope requires wrist rotation (not arm swinging), precise timing, and consistent rhythm. Start with the rope draped over one shoulder to learn the motion.",
+    cues: [
+      { letter: "W", name: "Wrists", description: "Turn the rope with your wrists only — NOT your whole arm. Small circles with the wrists. Arms stay relatively still at your sides.", commonMistake: "Using whole arm to swing rope — too big, too slow, exhausting" },
+      { letter: "T", name: "Timing", description: "Jump as the rope passes UNDER your feet — not before (too early = rope hits you) not after (too late = rope wraps around feet).", commonMistake: "Jumping too early or too late — watch where the rope hits the floor" },
+      { letter: "L", name: "Land Soft", description: "Land on the balls of your feet with knees slightly bent. Quiet landing. Do NOT land flat-footed or on your heels.", commonMistake: "Flat-footed heavy landing — causes ankle and knee strain" },
+      { letter: "R", name: "Rhythm", description: "Consistent rhythm — same height jump every time, same wrist speed. Count or sing to help keep rhythm.", commonMistake: "Jumping higher and higher — wastes energy and breaks rhythm" },
+    ],
+    teacherTips: "Start with rope on the ground. Jump over it on the floor. Then swing rope to one side and jump when it hits the ground on that side. Work up to full rotation. One direction only to start.",
+    progression: ["Rope stationary on floor — jump over it", "Rope swings to one side — jump when it hits floor", "One rotation and stop", "Multiple rotations", "Speed variation"],
+    equipment: "1 jump rope per student (cut to correct length = 2 feet taller than student)",
+    unit: "Weeks 23–24",
+  },
+  {
+    id: "hockey-stick-handling",
+    name: "Floor Hockey — Stick Handling",
+    category: "Floor Hockey",
+    grades: "K–5",
+    teks: "K.5A · 1st.5A · 2nd.5A · 3rd.5A · 4th.5A · 5th.5A",
+    description: "Safe and controlled stick handling is the foundation of floor hockey. The grip, body position, and puck control must all be established before any game play.",
+    cues: [
+      { letter: "G", name: "Grip", description: "Top hand grips at the top of the stick. Bottom hand 12–18 inches below. Hands create a V-shape on the stick. Relaxed grip — not too tight.", commonMistake: "Hands too close together — no leverage or control" },
+      { letter: "B", name: "Blade Down", description: "Blade of the stick stays on the floor at all times during dribbling. No lifting the blade above waist height.", commonMistake: "Lifting stick — dangerous and causes the puck to get away" },
+      { letter: "S", name: "Small Touches", description: "Small controlled touches — the puck should never be more than one stick-length away from you.", commonMistake: "Hitting too hard — loses control immediately" },
+      { letter: "F", name: "Forehand and Backhand", description: "Alternate between forehand (blade faces puck naturally) and backhand (blade flips to other side) to control puck through cones.", commonMistake: "Only using forehand — predictable and less control" },
+    ],
+    teacherTips: "Safety first — establish the stick handling safety rules BEFORE distributing equipment. No stick above waist height. No hitting opponent's stick. Equipment check before play begins.",
+    progression: ["Grip and hold — no puck", "Tap puck in place", "Push puck straight to wall and back", "Weave through cones", "Partner pass (push pass)", "Game application"],
+    equipment: "Floor hockey sticks (1 per student) · Yarn balls or pucks",
+    unit: "Weeks 26–29",
+  },
+  {
+    id: "volleyball-pass",
+    name: "Volleyball Underhand Pass (Bump)",
+    category: "Volleyball",
+    grades: "3–5",
+    teks: "3rd.1J · 4th.1K · 5th.1K",
+    description: "The forearm pass (bump) is the foundation of volleyball. A flat forearm platform directs the ball — not the hands. The legs drive through contact to provide power.",
+    cues: [
+      { letter: "P", name: "Platform", description: "Hands together, thumbs parallel and flat. Arms form a flat platform. Elbows locked and together. Forearms facing up.", commonMistake: "Hands apart or bent — uneven platform sends ball sideways" },
+      { letter: "A", name: "Angle", description: "Angle your platform toward your target. Tilt your arms in the direction you want the ball to go.", commonMistake: "Platform facing straight up — ball goes straight up, not to target" },
+      { letter: "C", name: "Contact Point", description: "Contact the ball on the forearms — not the hands or wrists. The sweet spot is the flat part of the forearms below the wrist.", commonMistake: "Hitting with the wrists — painful and inaccurate" },
+      { letter: "L", name: "Legs", description: "Bend knees before contact. Drive legs upward as you contact the ball. The power comes from legs — not arms.", commonMistake: "Arms only — weak pass with no direction control" },
+    ],
+    teacherTips: "Have students practice the platform position first with no ball — just the arm position. Check: are thumbs parallel? Elbows together? Then toss a balloon to themselves — balloons are slow and give time to set up the platform properly.",
+    progression: ["Balloon self-toss and bump", "Foam ball self-toss and bump", "Bump to wall", "Partner toss and bump", "Partner bump to partner", "Game application"],
+    equipment: "Balloons first · Then foam or light training balls",
+    unit: "Weeks 31–32",
+  },
+  {
+    id: "gymnastics-forward-roll",
+    name: "Gymnastics — Forward Roll",
+    category: "Gymnastics",
+    grades: "K–5",
+    teks: "K.1D · 1st.1B · 2nd.1D · 3rd.1C · 4th.1C · 5th.1B",
+    description: "The forward roll is the gateway gymnastics skill. It requires body control, trust, and the ability to transfer weight smoothly from feet to back. A safe chin-tuck is the most important cue.",
+    cues: [
+      { letter: "C", name: "Chin to Chest", description: "Before rolling, tuck chin firmly to chest and KEEP it there. This prevents rolling on the head and neck.", commonMistake: "Head lifting during roll — rolls to the side or lands on neck" },
+      { letter: "H", name: "Hands Flat", description: "Both hands flat on the mat, shoulder-width apart. Fingers spread. Push with hands to initiate the roll.", commonMistake: "Rolling over hands — should push off and then curl hands away" },
+      { letter: "R", name: "Round Back", description: "Curve your whole spine. No flat back. Think: try to make a ball shape with your whole body.", commonMistake: "Flat back — rolls sideways or gets stuck on shoulder blades" },
+      { letter: "P", name: "Push with Feet", description: "Push off the ground with both feet to get momentum. The push starts the roll — don't try to fall forward.", commonMistake: "Just falling — not enough momentum to complete the roll" },
+    ],
+    teacherTips: "Teach the chin tuck SEPARATELY first. Stand up, tuck chin, check they feel it. Never let a student roll on their head/neck. Check each student individually before group work. Mats must be in good condition.",
+    progression: ["Egg roll (side roll, curled up)", "Log roll", "Chin tuck practice only", "Assisted forward roll (teacher guides)", "Independent on mat", "Combine into short sequence"],
+    equipment: "Gymnastics mats (1 per student or per 2)",
+    unit: "Weeks 6–7",
+  },
+  {
+    id: "underhand-throw",
+    name: "Underhand Throw",
+    category: "Throwing & Catching",
+    grades: "K–2",
+    teks: "K.1H · 1st.1H · 2nd.1N",
+    description: "The underhand throw is the first throwing pattern taught. It is the foundation for bowling, softball pitching, and horseshoes. A pendulum arm swing with an opposite foot step.",
+    cues: [
+      { letter: "F", name: "Face the Target", description: "Stand facing your target. Feet shoulder-width apart.", commonMistake: "Standing sideways — aim is off" },
+      { letter: "S", name: "Step", description: "Step forward with the OPPOSITE foot as your throwing arm. Right hand = step left foot. Left hand = step right foot.", commonMistake: "Same-foot step — reduces power and accuracy" },
+      { letter: "S", name: "Swing", description: "Swing the throwing arm back like a pendulum — then forward through the release. Keep arm straight throughout.", commonMistake: "Bending the elbow — becomes more of a toss than a throw" },
+      { letter: "R", name: "Release", description: "Release when arm is pointing toward the target. Let go at the right moment — too early goes up, too late goes into the floor.", commonMistake: "Releasing too late — ball bounces into the ground" },
+    ],
+    teacherTips: "Have students swing their arm without a ball first. Watch for opposite foot step — this is the most critical cue. Use a target on the wall at about chest height so they can see where the ball goes.",
+    progression: ["Arm swing without ball", "Roll ball along floor to target", "Underhand toss to wall target", "Underhand toss to crate", "Partner toss and catch"],
+    equipment: "Bean bags · Yarn balls · Crates or targets",
+    unit: "Week 8",
+  },
+];

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pe-playbook",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["C:\\Users\\brand\\OneDrive\\Desktop\\The PE Playbook\\pe-playbook-app\\node_modules\\next\\dist\\bin\\next", "dev"],
+      "cwd": "C:\\Users\\brand\\OneDrive\\Desktop\\The PE Playbook\\pe-playbook-app",
+      "port": 3000
+    }
+  ]
+}
