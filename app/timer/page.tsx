@@ -19,7 +19,7 @@ function parseTimeTo24(raw: string): string {
   const s = raw.trim();
   const ampm = /AM|PM/i.test(s);
   const [timePart, meridian] = s.toUpperCase().split(/\s+/);
-  let [hStr, mStr] = timePart.split(":");
+  const [hStr, mStr] = timePart.split(":");
   let h = parseInt(hStr, 10);
   const m = parseInt(mStr || "0", 10);
   if (ampm) {
@@ -46,21 +46,9 @@ function parseScheduleCSV(text: string): ClassPeriod[] {
     .filter(Boolean) as ClassPeriod[];
 }
 
-function nowHHMM(): string {
-  const d = new Date();
-  return `${d.getHours().toString().padStart(2, "0")}:${d.getMinutes().toString().padStart(2, "0")}`;
-}
-
 function hhmm24ToMins(hhmm: string): number {
   const [h, m] = hhmm.split(":").map(Number);
   return h * 60 + m;
-}
-
-function minsToDisplay(total: number): string {
-  const h = Math.floor(total / 60);
-  const m = total % 60;
-  if (h > 0) return `${h}h ${m}m`;
-  return `${m}m`;
 }
 
 interface Exercise {
