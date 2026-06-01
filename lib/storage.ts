@@ -207,7 +207,8 @@ export async function getCloudItem<T>(table: JsonTable, fallback: T): Promise<T>
     .select(field)
     .eq("user_id", userId)
     .single();
-  return (data?.[field] as T) ?? getItem<T>(TABLE_LOCAL_KEY[table], fallback);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return ((data as any)?.[field] as T) ?? getItem<T>(TABLE_LOCAL_KEY[table], fallback);
 }
 
 export async function saveCloudItem<T>(table: JsonTable, value: T): Promise<void> {
