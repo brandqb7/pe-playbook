@@ -5,12 +5,25 @@ import { NextResponse, type NextRequest } from "next/server";
 const PUBLIC_ROUTES = ["/", "/login", "/signup", "/pricing", "/marketplace"];
 
 export async function middleware(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request });
+  const pathname = request.nextUrl.pathname;
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+  // Skip middleware entirely for static files under /app/timer/
+  if (pathname.startsWith("/app/timer")) {
+    return NextResponse.next();
+  }
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  // If env vars aren't set, just pass through — don't crash
+  if (!supabaseUrl || !supabaseKey) {
+    return NextResponse.next();
+  }
+
+  try {
+    let supabaseResponse = NextResponse.next({ request });
+
+    const supabase = createServerClient(supabaseUrl, supabaseKey, {
       cookies: {
         getAll() { return request.cookies.getAll(); },
         setAll(cookiesToSet) {
@@ -23,24 +36,26 @@ export async function middleware(request: NextRequest) {
           );
         },
       },
+    });
+
+    const { data: { user } } = await supabase.auth.getUser();
+    const isPublic = PUBLIC_ROUTES.some((r) => pathname === r);
+
+    // Redirect unauthenticated users away from protected routes
+    if (!user && !isPublic) {
+      return NextResponse.redirect(new URL("/login", request.url));
     }
-  );
 
-  const { data: { user } } = await supabase.auth.getUser();
-  const pathname = request.nextUrl.pathname;
-  const isPublic = PUBLIC_ROUTES.some((r) => pathname === r);
+    // Redirect logged-in users away from auth pages
+    if (user && (pathname === "/login" || pathname === "/signup")) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
 
-  // Redirect unauthenticated users away from protected routes
-  if (!user && !isPublic) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    return supabaseResponse;
+  } catch {
+    // Never let middleware crash the whole request
+    return NextResponse.next();
   }
-
-  // Redirect logged-in users away from auth pages
-  if (user && (pathname === "/login" || pathname === "/signup")) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
-
-  return supabaseResponse;
 }
 
 export const config = {
