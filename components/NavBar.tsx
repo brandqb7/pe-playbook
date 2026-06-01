@@ -4,10 +4,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createClient } from "../lib/supabase/client";
 
-const navLinks = [
+const navLinks: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/timer", label: "Timer" },
+  { href: "/app/timer/", label: "Timer", external: true },
   { href: "/mvpa", label: "MVPA" },
   { href: "/lessons", label: "Lessons" },
   { href: "/standards", label: "Standards" },
@@ -88,44 +88,46 @@ export default function NavBar() {
             const isActive =
               link.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
+                : pathname.startsWith(link.href.replace(/\/$/, ""));
+            const sharedStyle = {
+              padding: "6px 12px",
+              borderRadius: 7,
+              fontSize: 12,
+              fontWeight: 600,
+              textDecoration: "none",
+              whiteSpace: "nowrap" as const,
+              transition: "all 0.15s",
+              background: isActive ? "var(--surface2)" : "transparent",
+              color: isActive ? "var(--text)" : "var(--muted)",
+              border: isActive
+                ? "1px solid var(--border2)"
+                : "1px solid transparent",
+            };
+            const badge = link.label === "Timer" ? (
+              <span
                 style={{
-                  padding: "6px 12px",
-                  borderRadius: 7,
-                  fontSize: 12,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  whiteSpace: "nowrap",
-                  transition: "all 0.15s",
-                  background: isActive ? "var(--surface2)" : "transparent",
-                  color: isActive ? "var(--text)" : "var(--muted)",
-                  border: isActive
-                    ? "1px solid var(--border2)"
-                    : "1px solid transparent",
+                  marginLeft: 6,
+                  fontSize: 8,
+                  padding: "1px 5px",
+                  borderRadius: 99,
+                  background: "var(--green)22",
+                  color: "var(--green)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 1,
                 }}
               >
-                {link.label}
-                {link.href === "/timer" && (
-                  <span
-                    style={{
-                      marginLeft: 6,
-                      fontSize: 8,
-                      padding: "1px 5px",
-                      borderRadius: 99,
-                      background: "var(--green)22",
-                      color: "var(--green)",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: 1,
-                    }}
-                  >
-                    Live
-                  </span>
-                )}
+                Live
+              </span>
+            ) : null;
+
+            return link.external ? (
+              <a key={link.href} href={link.href} style={sharedStyle}>
+                {link.label}{badge}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} style={sharedStyle}>
+                {link.label}{badge}
               </Link>
             );
           })}
